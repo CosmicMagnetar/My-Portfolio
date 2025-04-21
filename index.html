@@ -4,7 +4,49 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Krishna.dev</title>
+  <link rel="icon" href="favicon.ico" />
+
+  <script>
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReduced) {
+      const messages = [
+        "👋 Krishna.dev",
+        "🚀 Full‑Stack & VR Wizard",
+        "✨ JavaScript Magician",
+        "🌌 Exploring the Cosmos"
+      ];
+      let msgIdx = 0;
+      setInterval(() => {
+        document.title = messages[msgIdx];
+        msgIdx = (msgIdx + 1) % messages.length;
+      }, 5000);
+      const canvas = document.createElement('canvas');
+      canvas.width = canvas.height = 32;
+      document.head.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      const emojis = ["🌟","🔥","⚡️","🎯"];
+      let iconIdx = 0;
+
+      setInterval(() => {
+        ctx.clearRect(0, 0, 32, 32);
+        ctx.font = "28px serif";
+        ctx.fillText(emojis[iconIdx], 0, 28);
+
+        let link = document.querySelector("link[rel~='icon']");
+        if (!link) {
+          link = document.createElement('link');
+          link.rel = 'icon';
+          document.head.appendChild(link);
+        }
+        link.href = canvas.toDataURL();
+
+        iconIdx = (iconIdx + 1) % emojis.length;
+      }, 5000);
+    }
+  </script>
+
   </head>
   <body>
     <div id="root"></div>
